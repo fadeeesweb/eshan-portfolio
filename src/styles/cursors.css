@@ -1,0 +1,52 @@
+/* ---------------------------------------------------------------------------
+   Custom cursor pack — "Elegant Black Gloss Gradient"
+   Source: Sweezy Cursors (https://sweezy-cursors.com/)
+   Frames inside each .cur: 16 / 32 / 48 / 64 / 128 px (PNG-encoded).
+   Hotspots below are the standard 32 px frame values (arrow 4,0 / hand 12,0),
+   with a 32 px PNG fallback for browsers that skip .cur decoding.
+   Applied on desktop, fine-pointer devices only — touch keeps native cursor.
+--------------------------------------------------------------------------- */
+
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  * {
+    cursor: url('/cursors/arrow.cur') 4 0, url('/cursors/arrow-32.png') 4 0, auto !important;
+  }
+
+  a,
+  a *,
+  button,
+  button *,
+  [role='button'],
+  [role='button'] *,
+  summary,
+  select,
+  optgroup,
+  option,
+  label,
+  .btn,
+  .link-arrow,
+  .nav__burger,
+  .footer__top-btn,
+  .field__select {
+    cursor: url('/cursors/pointer.cur') 12 0, url('/cursors/pointer-32.png') 12 0, pointer !important;
+  }
+
+  input:not([type='checkbox']):not([type='radio']),
+  textarea,
+  [contenteditable='true'] {
+    cursor: text !important;
+  }
+
+  input[type='checkbox'],
+  input[type='radio'] {
+    cursor: pointer !important;
+  }
+
+  :disabled,
+  [disabled],
+  [aria-disabled='true'] {
+    cursor: not-allowed !important;
+  }
+}

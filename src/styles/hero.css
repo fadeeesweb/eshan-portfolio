@@ -1,0 +1,232 @@
+.hero {
+  --px: 0;
+  --py: 0;
+  position: relative;
+  overflow-x: clip;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100svh;
+  padding-top: calc(var(--nav-h) + clamp(34px, 7vh, 84px));
+  padding-bottom: clamp(44px, 7vh, 80px);
+}
+
+.hero__grid {
+  display: grid;
+  gap: clamp(46px, 6vw, 72px);
+  align-items: center;
+}
+
+.hero__eyebrow,
+.hero__sub,
+.hero__tagline,
+.hero__actions,
+.hero__status,
+.hero__visual {
+  animation: heroFade 0.95s var(--ease-out) var(--d, 0s) backwards;
+}
+
+.hero__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: clamp(20px, 3vh, 30px);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.hero__eyebrow-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero__eyebrow-item i {
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.45rem, 6.6vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.042em;
+}
+
+.hero__line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  animation: heroFade 0.6s var(--ease-out) var(--d, 0s) backwards;
+}
+
+.hero__line-inner {
+  display: block;
+  animation: lineRise 1.1s var(--ease-out) var(--d, 0s) both;
+}
+
+.hero__line-inner--accent {
+  color: #e4ecff;
+  background: linear-gradient(96deg, #ffffff 6%, #b9cdff 52%, #7ddcff 98%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .hero__line-inner--accent {
+    color: transparent;
+  }
+}
+
+.hero__sub {
+  max-width: 34ch;
+  margin-top: clamp(22px, 3.4vh, 32px);
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.5;
+  letter-spacing: -0.014em;
+  color: #dce4f1;
+}
+
+.hero__tagline {
+  max-width: 60ch;
+  margin-top: 26px;
+  padding-left: 18px;
+  border-left: 1px solid rgba(255, 255, 255, 0.13);
+  font-size: 0.985rem;
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: clamp(30px, 4.4vh, 42px);
+}
+
+.hero__status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: clamp(34px, 5vh, 52px);
+}
+
+.hero__scroll {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.hero__scroll-track {
+  position: relative;
+  display: block;
+  width: 68px;
+  height: 1px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.hero__scroll-thumb {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 24px;
+  background: linear-gradient(90deg, transparent, var(--cyan));
+  animation: scrollThumb 2.6s var(--ease) infinite;
+}
+
+.hero__visual {
+  position: relative;
+}
+
+.hero__rule {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: min(var(--maxw), 100% - var(--gutter) * 2);
+  margin: clamp(38px, 6vh, 72px) auto 0;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  animation: heroFade 0.9s var(--ease-out) 1.15s backwards;
+}
+
+.hero__rule-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.02));
+}
+
+.hero__rule span:last-child {
+  display: none;
+}
+
+@media (min-width: 700px) {
+  .hero__scroll {
+    display: inline-flex;
+  }
+
+  .hero__rule span:last-child {
+    display: inline;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(36px, 4vw, 64px);
+  }
+
+  .hero__sub {
+    max-width: 32ch;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero__visual {
+    margin-right: clamp(-72px, -4vw, 0px);
+  }
+}
+
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lineRise {
+  from {
+    transform: translateY(112%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollThumb {
+  0% {
+    transform: translateX(-26px);
+  }
+  100% {
+    transform: translateX(72px);
+  }
+}
+

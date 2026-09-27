@@ -1,0 +1,125 @@
+.cta {
+  padding-block: clamp(56px, 8vw, 104px);
+}
+
+.cta__panel {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(48px, 7vw, 96px) clamp(24px, 5vw, 80px);
+  border-radius: clamp(26px, 3vw, 40px);
+  text-align: center;
+}
+
+.cta__aurora {
+  position: absolute;
+  inset: -45% -15% auto;
+  z-index: 0;
+  height: 140%;
+  background:
+    radial-gradient(46% 46% at 28% 34%, rgba(95, 140, 255, 0.4), transparent 70%),
+    radial-gradient(42% 42% at 74% 64%, rgba(78, 226, 255, 0.27), transparent 70%),
+    radial-gradient(38% 40% at 56% 18%, rgba(150, 133, 255, 0.3), transparent 74%);
+  opacity: 0.7;
+  animation: ctaAurora 20s var(--ease) infinite alternate;
+  pointer-events: none;
+}
+
+.cta__ring {
+  position: absolute;
+  z-index: 1;
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cta__ring--one {
+  top: -170px;
+  right: -130px;
+  width: 440px;
+  height: 440px;
+  animation: ctaSpin 96s linear infinite;
+}
+
+.cta__ring--two {
+  bottom: -150px;
+  left: -110px;
+  width: 320px;
+  height: 320px;
+  animation: ctaSpin 72s linear infinite reverse;
+}
+
+.cta__inner {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta__title {
+  max-width: 17ch;
+  margin-top: 24px;
+  font-family: var(--font-display);
+  font-size: clamp(1.95rem, 4.4vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -0.036em;
+  text-wrap: balance;
+}
+
+.cta__text {
+  max-width: 48ch;
+  margin-top: 20px;
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  line-height: 1.7;
+  color: #ccd6e6;
+}
+
+.cta__actions {
+  margin-top: clamp(30px, 4vw, 42px);
+}
+
+.cta__meta {
+  margin-top: 26px;
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.44);
+}
+
+.cta__edge {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  z-index: 3;
+  display: none;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.32);
+}
+
+@media (min-width: 1180px) {
+  .cta__edge {
+    display: block;
+  }
+}
+
+@keyframes ctaAurora {
+  from {
+    transform: translate3d(-4%, -2%, 0) scale(1);
+    opacity: 0.55;
+  }
+  to {
+    transform: translate3d(5%, 4%, 0) scale(1.12);
+    opacity: 0.85;
+  }
+}
+
+@keyframes ctaSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
