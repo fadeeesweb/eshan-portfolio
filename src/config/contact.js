@@ -12,10 +12,8 @@ export const contactConfig = {
   endpoint: null,
 
   socials: {
-    linkedin: '#',
-    instagram: '#',
-    x: '#',
-    emailLink: '#',
+    instagram: 'https://www.instagram.com/oye_eshany/',
+    discord: 'https://discord.com/users/1540570885881069618',
   },
 }
 

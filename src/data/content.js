@@ -242,10 +242,8 @@ export const footer = {
     { id: 'contact', label: 'Contact' },
   ],
   socials: [
-    { label: 'LinkedIn', key: 'linkedin' },
     { label: 'Instagram', key: 'instagram' },
-    { label: 'X', key: 'x' },
-    { label: 'Email', key: 'emailLink' },
+    { label: 'Discord', key: 'discord' },
   ],
   copyright: '© 2026 Eshan Shah. All rights reserved.',
 }

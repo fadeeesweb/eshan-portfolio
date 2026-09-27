@@ -25,6 +25,8 @@ export default function Footer() {
     }
   }
 
+  const isExternal = (url) => /^https?:\/\//i.test(url)
+
   return (
     <footer className="footer">
       <div className="shell">
@@ -48,6 +50,8 @@ export default function Footer() {
                 <a
                   className="footer__social"
                   href={social.url}
+                  target={isExternal(social.url) ? '_blank' : undefined}
+                  rel={isExternal(social.url) ? 'noopener noreferrer' : undefined}
                   onClick={(event) => handleSocial(event, social.url)}
                   aria-disabled={isPlaceholder(social.url) || undefined}
                   title={
