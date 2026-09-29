@@ -3,8 +3,8 @@
  * Replace the placeholder values below — nothing else needs to change.
  */
 export const contactConfig = {
-  email: 'hello@yourdomain.com',
-  availability: 'Available for selected projects',
+  email: 'eshaan.eshaan488@gmail.com',
+  availability: '24 hours',
   response: 'Within 1–2 business days',
   location: 'Remote · Worldwide',
 
