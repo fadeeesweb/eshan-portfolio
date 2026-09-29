@@ -8,7 +8,11 @@ export const contactConfig = {
   response: 'Within 1–2 business days',
   location: 'Remote · Worldwide',
 
-  /** Optional: POST endpoint for the contact form (Formspree, API route, etc.). */
+  /**
+   * Form delivery — ON HOLD for now. Set this to a real endpoint
+   * (e.g. FormSubmit / Web3Forms) and the form will deliver messages;
+   * while it is null the form only validates and says nothing was sent.
+   */
   endpoint: null,
 
   socials: {

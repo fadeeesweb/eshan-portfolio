@@ -63,10 +63,18 @@ export default function Contact() {
     try {
       const response = await fetch(contactConfig.endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          ...values,
+          _subject: `New ${values.projectType} enquiry — ${values.name}`,
+          _honey: '',
+          _captcha: 'false',
+        }),
       })
-      if (!response.ok) throw new Error('Request failed')
+      const data = await response.json().catch(() => null)
+      if (!response.ok || (data && String(data.success) === 'false')) {
+        throw new Error((data && data.message) || 'Request failed')
+      }
       setStatus('sent')
       setValues(EMPTY)
     } catch {
@@ -220,8 +228,13 @@ export default function Contact() {
                 {status === 'unconfigured'
                   ? 'Form validated — nothing was sent yet. Connect a backend endpoint in src/config/contact.js and this form will deliver messages.'
                   : status === 'sent'
-                    ? 'Thanks — your message has been sent. I will get back to you shortly.'
-                    : 'Something went wrong sending your message. Please try again or use the email address listed here.'}
+                    ? 'Thanks — your message has been sent. I will reply within 1–2 business days.'
+                    : 'Something went wrong sending your message — please email me directly at '}
+                {status === 'error' ? (
+                  <a className="link-underline" href={`mailto:${contactConfig.email}`}>
+                    {contactConfig.email}
+                  </a>
+                ) : null}
               </p>
             ) : null}
           </div>
